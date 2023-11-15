@@ -1,6 +1,5 @@
 open Sudoku
 
-let () = 
+let () =
   (* Sudoku logic here *)
-  None
-
+()
