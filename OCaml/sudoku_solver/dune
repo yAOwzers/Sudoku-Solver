@@ -1,0 +1,11 @@
+(executable
+  (name sudoku_solver)
+  (libraries sudoku)
+ )
+
+(library
+  (name sudoku)
+  (modules Lib.Sudoku)
+  (wrapped false)
+ )
+
