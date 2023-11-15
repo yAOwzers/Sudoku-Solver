@@ -1,2 +1,4 @@
 (test
- (name sudoku_solver))
+ (name sudoku_test)
+ (libraries sudoku_solver ounit2)
+ (modules sudoku_test))

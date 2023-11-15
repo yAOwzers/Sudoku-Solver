@@ -1,10 +1,10 @@
-# dune runtest test/sudoku_test.ml
+# dune runtest
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root:
 # /Users/joel/Documents/GitHub/OCaml/Sudoku-Solver/OCaml/sudoku_solver
 # Auto-detected concurrency: 8
-$ /Users/joel/.opam/default/bin/ocamlc.opt -config > /var/folders/d5/56ds2rcx3gdcmmg75sp2g72r0000gn/T/dune_834245_output
+$ /Users/joel/.opam/default/bin/ocamlc.opt -config > /var/folders/d5/56ds2rcx3gdcmmg75sp2g72r0000gn/T/dune_ec89dc_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -103,3 +103,17 @@ $ /Users/joel/.opam/default/bin/ocamlc.opt -config > /var/folders/d5/56ds2rcx3gd
 #      }
 #  ; instrument_with = []
 #  }
+$ (cd _build/default && /Users/joel/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.sudoku_test.eobjs/byte -I test/.sudoku_test.eobjs/native -I /Users/joel/.opam/default/lib/base -I /Users/joel/.opam/default/lib/base/base_internalhash_types -I /Users/joel/.opam/default/lib/base/caml -I /Users/joel/.opam/default/lib/base/shadow_stdlib -I /Users/joel/.opam/default/lib/jane-street-headers -I /Users/joel/.opam/default/lib/ocaml/unix -I /Users/joel/.opam/default/lib/ounit2 -I /Users/joel/.opam/default/lib/ounit2/advanced -I /Users/joel/.opam/default/lib/ppx_compare/runtime-lib -I /Users/joel/.opam/default/lib/ppx_enumerate/runtime-lib -I /Users/joel/.opam/default/lib/ppx_hash/runtime-lib -I /Users/joel/.opam/default/lib/ppx_inline_test/config -I /Users/joel/.opam/default/lib/ppx_inline_test/runtime-lib -I /Users/joel/.opam/default/lib/ppx_sexp_conv/runtime-lib -I /Users/joel/.opam/default/lib/seq -I /Users/joel/.opam/default/lib/sexplib0 -I /Users/joel/.opam/default/lib/stdlib-shims -I /Users/joel/.opam/default/lib/time_now -I lib/.sudoku_solver.objs/byte -I lib/.sudoku_solver.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.sudoku_test.eobjs/native/dune__exe__Sudoku_test.cmx -c -impl test/sudoku_test.ml)
+> File "test/sudoku_test.ml", line 18, characters 33-53:
+> 18 |       assert_bool "Test case 1" (Sudoku.is_valid_move board 0 2 4);
+>                                       ^^^^^^^^^^^^^^^^^^^^
+> Error: Unbound value Sudoku.is_valid_move
+[2]
+$ (cd _build/.sandbox/859fe517a0e1724c0aa2cb41f4786b9a/default && .ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --cookie 'inline_tests="enabled"' --cookie 'library-name="sudoku_solver"' -o lib/sudoku.pp.ml --impl lib/sudoku.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/joel/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.sudoku_solver.objs/byte -I lib/.sudoku_solver.objs/native -I /Users/joel/.opam/default/lib/base -I /Users/joel/.opam/default/lib/base/base_internalhash_types -I /Users/joel/.opam/default/lib/base/caml -I /Users/joel/.opam/default/lib/base/shadow_stdlib -I /Users/joel/.opam/default/lib/jane-street-headers -I /Users/joel/.opam/default/lib/ppx_compare/runtime-lib -I /Users/joel/.opam/default/lib/ppx_enumerate/runtime-lib -I /Users/joel/.opam/default/lib/ppx_hash/runtime-lib -I /Users/joel/.opam/default/lib/ppx_inline_test/config -I /Users/joel/.opam/default/lib/ppx_inline_test/runtime-lib -I /Users/joel/.opam/default/lib/ppx_sexp_conv/runtime-lib -I /Users/joel/.opam/default/lib/sexplib0 -I /Users/joel/.opam/default/lib/time_now -intf-suffix .ml -no-alias-deps -opaque -o lib/.sudoku_solver.objs/native/sudoku.cmx -c -impl lib/sudoku.pp.ml)
+> File "lib/sudoku.ml", line 57, characters 2-42:
+> 57 |   Printf.printf "Test Result: %b\n" result;  (* Print the result *)
+>        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Error: This expression has type unit but an expression was expected of type
+>          bool
+[2]

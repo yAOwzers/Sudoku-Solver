@@ -1,2 +1,7 @@
 (library
- (name sudoku_solver))
+ (name sudoku_solver)
+ (public_name sudoku_solver)
+ (modules sudoku)
+ (wrapped false)
+ (inline_tests)
+ (preprocess (pps ppx_inline_test)))
