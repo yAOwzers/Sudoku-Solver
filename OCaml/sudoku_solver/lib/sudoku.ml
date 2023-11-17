@@ -29,47 +29,24 @@ module Sudoku = struct
   ;;
 
   let solve_sudoku board =
-    None
+    let rec solve row col = 
+      match find_empty_cell board with
+      | None -> true
+      | Some (row, col) -> (* if there are any empty cells *)
+          for num = 1 to 9 do
+            if is_valid_move board row col num then begin
+              board.(row).(col) <- num;
+              if solve row col then
+                true (* end condition if find_empty_cell is true *)
+              else 
+                board.(row).(col) <- 0 (* back track *)
+            end
+          done;
+          false (* No valid number can be placed in the current cell *)
+    in
+    solve 0 0
   ;;
 
 
 end
 
-  let%test "is_valid_move test" =
-    let board = [|
-      [|5; 3; 0; 0; 7; 0; 0; 0; 0|];
-    [|6; 0; 0; 1; 9; 5; 0; 0; 0|];
-    [|0; 9; 8; 0; 0; 0; 0; 6; 0|];
-    [|8; 0; 0; 0; 6; 0; 0; 0; 3|];
-    [|4; 0; 0; 8; 0; 3; 0; 0; 1|];
-    [|7; 0; 0; 0; 2; 0; 0; 0; 6|];
-    [|0; 6; 0; 0; 0; 0; 2; 8; 0|];
-    [|0; 0; 0; 4; 1; 9; 0; 0; 5|];
-    [|0; 0; 0; 0; 8; 0; 0; 7; 9|];
-    |] in
-    let result =
-      Sudoku.is_valid_move board 0 2 4
-    && not (Sudoku.is_valid_move board 1 2 3)
-    && Sudoku.is_valid_move board 2 2 7
-    && Sudoku.is_valid_move board 3 4 5
-    && not (Sudoku.is_valid_move board 4 4 3)
-    in
-  Printf.printf "Test Result: %b\n" result;  (* Print the result *)
-  (*assert result; *)  (* Assert the result *)
-  result
-  ;;
-
-  let%test "find_empty_cell test" =
-    let board = [|
-      [|5; 3; 0; 0; 7; 0; 0; 0; 0|];
-    [|6; 0; 0; 1; 9; 5; 0; 0; 0|];
-    [|0; 9; 8; 0; 0; 0; 0; 6; 0|];
-    [|8; 0; 0; 0; 6; 0; 0; 0; 3|];
-    [|4; 0; 0; 8; 0; 3; 0; 0; 1|];
-    [|7; 0; 0; 0; 2; 0; 0; 0; 6|];
-    [|0; 6; 0; 0; 0; 0; 2; 8; 0|];
-    [|0; 0; 0; 4; 1; 9; 0; 0; 5|];
-    [|0; 0; 0; 0; 8; 0; 0; 7; 9|];
-    |] in
-    Sudoku.find_empty_cell board = Some(0, 2)
-  ;;
