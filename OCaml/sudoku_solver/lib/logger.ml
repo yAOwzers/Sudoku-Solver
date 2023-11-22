@@ -1,1 +1,1 @@
-let debug fmt = Printf.printf ("[DEBUG] " ^^ fmt ^^ "\n");;
+let debug fmt = Printf.printf ("[DEBUG] " ^^ fmt ^^ "\n")
