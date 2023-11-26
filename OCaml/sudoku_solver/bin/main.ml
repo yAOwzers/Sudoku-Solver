@@ -1,4 +1,4 @@
-open Sudoku
+let () = Logger.disable_debug ()
 
 let () =
   let sudoku_board =
@@ -19,6 +19,8 @@ let () =
   Sudoku.print_board sudoku_board;
 
   if Sudoku.solve_sudoku sudoku_board then (
-    Printf.printf "\nSolution:\n";
+    Printf.printf "Sudoku solved successfully:\n";
     Sudoku.print_board sudoku_board)
-  else Printf.printf "\nNo solution exists.\n"
+  else (
+    Sudoku.print_board sudoku_board;
+    Printf.printf "\nNo solution exists.\n")
