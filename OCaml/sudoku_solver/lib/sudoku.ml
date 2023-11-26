@@ -12,8 +12,8 @@ let print_board board =
 (* to check if the number is in row, col and subgrid *)
 let is_valid_move board row col num =
   Array.exists (( = ) num) board.(row)
-  && Array.exists (fun r -> r.(col) = num) board
-  && Array.exists
+  || Array.exists (fun r -> r.(col) = num) board
+  || Array.exists
        (fun r -> Array.exists (( = ) num) (Array.sub r col 3))
        (Array.sub board row 3)
 
