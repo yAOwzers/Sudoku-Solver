@@ -1,9 +1,0 @@
-(executable
-  (name main)
-  (modules main)
- )
-
-(library
-  (name sudoku)
-  (modules sudoku)
- )
