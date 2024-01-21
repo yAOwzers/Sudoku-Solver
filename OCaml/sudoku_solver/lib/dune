@@ -1,0 +1,5 @@
+(library
+ (name sudoku_solver)
+ (public_name sudoku_solver)
+ (modules sudoku logger)
+ (wrapped false))
